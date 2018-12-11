@@ -73,16 +73,16 @@ namespace Simulation
 			
 		}
 
-		void simulating_annealing(Simulation::Node *n, Simulation::Sol *s);
+		void simulating_annealing(Simulation::Node *n, Simulation::Sol *s, double cost);
 		{
 			s -> distance;
 			s->temperature;
 			s->cooling_rate;
 			s-> min_temperature;
-			while (temperature > min_temperature)
+			s->current_solution;
+			s->permuted_solution;
 
-			s->current_solution = s->permuted_solution;
-			if (permuted_solution > current_solution)
+			if (permuted_solution < current_solution)
 			{
 				permuted_solution != current_solution;
 			}
@@ -90,6 +90,8 @@ namespace Simulation
 			{
 				permuted_solution -> current_solution;
 			}
+
+			while (temperature > min_temperature)
 
 		}
 
