@@ -38,15 +38,15 @@ namespace Simulation
 	{
 		const int *index;
 		int *h;
-		double temperature = 1.0;
-		double cooling_rate = 0.98;
+		double *temperature; //= 1.0;
+		double *cooling_rate; //= 0.98;
 		double *current_solution;
 		double *permuted_solution;
-		double min_temperature = 0.000001;
+		double *min_temperature; //= 0.000001;
 
 	};
 	
-	void retrieve_Nodes(Node *n, Sol *s, int value, int first_city, int last_city)
+	void retrieve_Nodes(Node *n, Sol *s, int value, int first_city, int detour_1, int detour_2, int detour_3, int last_city)
 	{
 
 		const int index = 5;
@@ -54,19 +54,20 @@ namespace Simulation
 
 
 		myarray[0] = first_city;
-		myarray[1] = rand() % 8 + 33, rand() % 41 + 4;
-		myarray[2] = rand() % 23, rand() % 64;
-		myarray[3] = rand() % 74, rand() % 47;
+		myarray[1] = detour_1;
+		myarray[2] = detour_2;
+		myarray[3] = detour_3;
 		myarray[4] = last_city;
 
 		float create_Random_Nodes(Sol *s, float pos_x, float pos_y, float distance);
 		{
-			myarray[0] = 3, 3;
-			myarray[1] = rand() % 8 + 33, rand() % 41 + 4;
-			myarray[2] = rand() % 23, rand() % 64;
-			myarray[3] = rand() % 74, rand() % 47;
-			myarray[4] = 105, 105;
+			first_city = 3, 3;
+			detour_1 = rand() % 8 + 33, rand() % 41 + 4;
+			detour_2 = rand() % 23, rand() % 64;
+			detour_3 = rand() % 74, rand() % 47;
+			last_city = 105, 105;
 
+			
 			
 		}
 
@@ -74,9 +75,6 @@ namespace Simulation
 /*
 	void create_Random_Nodes(Node *n, Sol *s, int value)
 	{
-		retrieve_Nodes;
-		n->x;
-		n->y;
 		
 		myarray[0] = 3, 3;
 		myarray[1] = rand() % 8 + 33, rand() % 41 + 4;
