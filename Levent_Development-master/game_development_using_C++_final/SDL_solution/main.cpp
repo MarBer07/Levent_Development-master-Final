@@ -45,7 +45,10 @@ namespace Simulation
 	int myarray;
 	void retrieve_Nodes(Node *n, Sol *s, int n_nodes)
 	{
-		
+		for (int i = 0; i < n_nodes; i++)
+		{
+
+		}
 
 		myarray[0];
 		myarray[1] = detour_1;
@@ -56,10 +59,7 @@ namespace Simulation
 
 	void create_Random_Nodes(Sol *s, float pos_x, float pos_y, float distance, int n_nodes)
 	{
-		for (int i = 0; i < n_nodes; i++)
-		{
-
-		}
+		
 
 		myarray[0].pos_x = rand() % screen_width;
 		myarray[0].pos_y = rand() % screen_height;
@@ -90,8 +90,10 @@ namespace Simulation
 		double *permuted_solution;
 		double min_temperature= 0.000001;
 		double p = (double)rand() / RAND_MAX;
-
+		double tmp;
 		current_solution = 0;
+		
+
 
 		if (permuted_solution < current_solution)
 		{
@@ -113,7 +115,7 @@ namespace Simulation
 	
 	};
 
-	void init(Simulation::Node *n, Simulation::Sol *s, int size)
+	void init(int screen_w, int screen_h)
 	{
 		SDL_Init(SDL_INIT_VIDEO);
 
