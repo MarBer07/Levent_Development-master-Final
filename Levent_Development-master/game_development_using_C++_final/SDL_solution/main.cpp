@@ -41,10 +41,11 @@ namespace Simulation
 		
 	};
 	
-	int n_nodes = 5;
+	//int n_nodes = 5;
 	int myarray;
-	void retrieve_Nodes(Node *n, Sol *s, int value)
+	void retrieve_Nodes(Node *n, Sol *s, int n_nodes)
 	{
+		
 
 		myarray[0];
 		myarray[1] = detour_1;
@@ -53,8 +54,13 @@ namespace Simulation
 		myarray[4] = last_city;
 	}
 
-	void create_Random_Nodes(Sol *s, float pos_x, float pos_y, float distance)
+	void create_Random_Nodes(Sol *s, float pos_x, float pos_y, float distance, int n_nodes)
 	{
+		for (int i = 0; i < n_nodes; i++)
+		{
+
+		}
+
 		myarray[0].pos_x = rand() % screen_width;
 		myarray[0].pos_y = rand() % screen_height;
 
