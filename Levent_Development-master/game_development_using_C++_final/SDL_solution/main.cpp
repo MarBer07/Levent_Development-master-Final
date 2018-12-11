@@ -30,7 +30,7 @@ namespace Simulation
 
 	struct Node
 	{
-		float *x1, *x2, *y1, *y2, distance;
+		float **x, **y, distance;
 		int n_nodes = 3;
 		
 	};
@@ -39,7 +39,8 @@ namespace Simulation
 	{
 		const int *index;
 		int *h;
-		double *temperature; // = 1.0;
+		float distance;
+		double *&temperature; // = 1.0;
 		double *cooling_rate; //= 0.98;
 		double **current_solution;
 		double **permuted_solution;
@@ -68,8 +69,28 @@ namespace Simulation
 			detour_3 = rand() % 74, rand() % 47;
 			last_city = 105, 105;
 
+		
 			
-			
+		}
+
+		void simulating_annealing(Simulation::Node *n, Simulation::Sol *s);
+		{
+			s -> distance;
+			s->temperature;
+			s->cooling_rate;
+			s-> min_temperature;
+			while (temperature > min_temperature)
+
+			s->current_solution = s->permuted_solution;
+			if (permuted_solution > current_solution)
+			{
+				permuted_solution != current_solution;
+			}
+			else
+			{
+				permuted_solution -> current_solution;
+			}
+
 		}
 
 	};
@@ -92,14 +113,6 @@ namespace Simulation
 		/*
 		YOUR INIT CODE
 		*/
-
-		s->temperature = 1.0;
-		s->cooling_rate = 0.98;
-
-
-		s->current_solution =  s -> permuted_solution;
-		
-		n->distance = sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
 
 
 
