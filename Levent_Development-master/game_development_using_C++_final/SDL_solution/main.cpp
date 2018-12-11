@@ -1,5 +1,10 @@
+//Programer: Marco Bermudez
+//Project: travelling salesman problem with simulated annealing
+//Collaborator" leventalbayrak
+
 #include <iostream>
 #include <assert.h>
+#include "Queue_Example.h"
 using namespace std;
 
 //include SDL header
@@ -21,7 +26,42 @@ namespace Simulation
 	unsigned char prev_key_state[256];
 	unsigned char *keys = NULL;
 
-	void init()
+	struct Node
+	{
+		float *x, *y;
+		int n_nodes;
+	};
+	
+	/*struct Sol
+	{
+		int *index;
+		int h;
+	};
+	*/
+	void retrieve_Nodes(Node *n, int value)
+	{
+
+		const int index = 5;
+
+		int myarray[index];
+		myarray[0] = 0;
+		myarray[1] = 8;
+		myarray[2] = 23;
+		myarray[3] = 74;
+		myarray[4] = 1;
+
+		int tmp;
+	
+
+	};
+
+	void create_Random_Nodes(Node *n, int value)
+	{
+		
+
+	}
+
+	void init(Node *n, int size)
 	{
 		SDL_Init(SDL_INIT_VIDEO);
 
@@ -37,13 +77,13 @@ namespace Simulation
 			-1, SDL_RENDERER_ACCELERATED);
 
 		/*
-		
 		YOUR INIT CODE
-		
 		*/
+
+
 	}
 
-	void update()
+	void update(unsigned int current_time)
 	{
 		//copy previous key state
 		memcpy(prev_key_state, keys, 256);
@@ -59,11 +99,11 @@ namespace Simulation
 		}
 
 		/*
-		
 		YOUR UPDATE CODE
-		
 		*/
 		
+
+
 	}
 
 	void draw()
@@ -88,7 +128,6 @@ namespace Simulation
 int main(int argc, char **argv)
 {
 	
-
 	Simulation::init();
 
 

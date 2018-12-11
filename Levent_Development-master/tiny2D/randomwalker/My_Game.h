@@ -7,6 +7,8 @@
 
 namespace My_Game
 {
+	//int direction[4] = { 1,2,3,4 };
+	// east = 1, west = 2, north = 3, south = 4
 	int m(int x, int y, int ncols)
 	{
 		return y*ncols + x;
@@ -25,16 +27,27 @@ namespace My_Game
 
 	void random_Walk_Step(Grid::Point *p, Grid::Grid *g)
 	{
+
 		switch (rand() % 4)
 		{
-
-
+		case 0: 
+			if (p->y > 1)p->y -= 1;
+			break;
+		case 1:	
+			if (p->x < g->n_cols-1)p->x += 1;
+			break;
+		case 2: 
+			if (p->y < g->n_rows-1)p->y += 1;
+			break;
+		case 3:	
+			if (p->x > 1)p->x -= 1;
+			break;
 		}
 
-		g->data[m(p->x, p->y, g->n_cols)] = 1;
+		g->data[m(p->x, p->y, g->n_cols)] += 1;
 
 	}
-
+		
 	namespace World
 	{
 		//manages a tileset image
@@ -45,10 +58,13 @@ namespace My_Game
 		
 		Grid::Point current_position;
 		Grid::Grid map;
+		Grid::Grid data_map;
+		Grid::Grid display_map;
 
 		Grid_Camera::Grid_Camera camera;
 
 	}
+
 
 	//do allocations and system initialization here
 	void init(int screen_w, int screen_h)
@@ -96,7 +112,7 @@ namespace My_Game
 		SDL_RenderClear(Engine::renderer);
 
 		Tileset::draw_Grid(&World::tileset, &World::camera, &World::map, &RGBA::default, Engine::renderer);
-
+		
 		//flip buffers
 		SDL_RenderPresent(Engine::renderer);
 	}
