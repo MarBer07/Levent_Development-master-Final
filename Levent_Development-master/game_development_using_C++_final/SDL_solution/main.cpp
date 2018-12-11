@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <assert.h>
+#include <iterator>
 #include "Queue_Example.h"
 using namespace std;
 
@@ -28,40 +29,64 @@ namespace Simulation
 
 	struct Node
 	{
-		float *x, *y;
+		float *x, *y, *x2, y2;
 		int n_nodes;
+		
 	};
 	
-	/*struct Sol
+	struct Sol
 	{
-		int *index;
-		int h;
+		const int *index;
+		int *h;
+		double temperature = 1.0;
+		double cooling_rate = 0.98;
+		double *current_solution;
+		double *permuted_solution;
+		double min_temperature = 0.000001;
+
 	};
-	*/
-	void retrieve_Nodes(Node *n, int value)
+	
+	void retrieve_Nodes(Node *n, Sol *s, int value, int first_city, int last_city)
 	{
 
 		const int index = 5;
-
 		int myarray[index];
-		myarray[0] = 0;
-		myarray[1] = 8;
-		myarray[2] = 23;
-		myarray[3] = 74;
-		myarray[4] = 1;
 
-		int tmp;
-	
+
+		myarray[0] = 3,3;
+		myarray[1] = rand() % 8 + 33, rand() % 41 + 4;
+		myarray[2] = rand() % 23, rand() % 64;
+		myarray[3] = rand() % 74, rand() % 47;
+		myarray[4] = 105,105;
+
+		float create_Random_Nodes(Sol *s,float pos_x, float pos_y, float distance);
+		{
+			myarray[0] = 3, 3;
+			myarray[1] = rand() % 8 + 33, rand() % 41 + 4;
+			myarray[2] = rand() % 23, rand() % 64;
+			myarray[3] = rand() % 74, rand() % 47;
+			myarray[4] = 105, 105;
+
+			
+		}
 
 	};
-
-	void create_Random_Nodes(Node *n, int value)
+/*
+	void create_Random_Nodes(Node *n, Sol *s, int value)
 	{
+		retrieve_Nodes;
+		n->x;
+		n->y;
 		
-
+		myarray[0] = 3, 3;
+		myarray[1] = rand() % 8 + 33, rand() % 41 + 4;
+		myarray[2] = rand() % 23, rand() % 64;
+		myarray[3] = rand() % 74, rand() % 47;
+		myarray[4] = 105, 105;
+		
 	}
-
-	void init(Node *n, int size)
+	*/
+	void init(Simulation::Node *n, Simulation::Sol *s, int size)
 	{
 		SDL_Init(SDL_INIT_VIDEO);
 
@@ -79,6 +104,8 @@ namespace Simulation
 		/*
 		YOUR INIT CODE
 		*/
+
+		//s->current_solution = (y2 - y) / (x2 - x);
 
 
 	}
