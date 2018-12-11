@@ -29,8 +29,8 @@ namespace Simulation
 
 	struct Node
 	{
-		float *x, *y, *x2, y2;
-		int n_nodes;
+		float *x1, *x2, *y1, *y2, distance;
+		int n_nodes = 3;
 		
 	};
 	
@@ -53,13 +53,13 @@ namespace Simulation
 		int myarray[index];
 
 
-		myarray[0] = 3,3;
+		myarray[0] = first_city;
 		myarray[1] = rand() % 8 + 33, rand() % 41 + 4;
 		myarray[2] = rand() % 23, rand() % 64;
 		myarray[3] = rand() % 74, rand() % 47;
-		myarray[4] = 105,105;
+		myarray[4] = last_city;
 
-		float create_Random_Nodes(Sol *s,float pos_x, float pos_y, float distance);
+		float create_Random_Nodes(Sol *s, float pos_x, float pos_y, float distance);
 		{
 			myarray[0] = 3, 3;
 			myarray[1] = rand() % 8 + 33, rand() % 41 + 4;
@@ -105,8 +105,8 @@ namespace Simulation
 		YOUR INIT CODE
 		*/
 
-		//s->current_solution = (y2 - y) / (x2 - x);
-
+		s->current_solution = permuted_solution;
+		
 
 	}
 
