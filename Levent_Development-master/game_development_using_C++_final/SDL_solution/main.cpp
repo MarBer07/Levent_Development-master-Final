@@ -84,11 +84,11 @@ namespace Simulation
 
 			if (permuted_solution < current_solution)
 			{
-				permuted_solution != current_solution;
+				permuted_solution = current_solution;
 			}
-			else
+			else if (permuted_solution > current_solution)
 			{
-				permuted_solution -> current_solution;
+				
 			}
 
 			while (temperature > min_temperature)
@@ -139,7 +139,7 @@ namespace Simulation
 		YOUR UPDATE CODE
 		*/
 		
-
+		Simulation::create_Random_Nodes;
 
 	}
 
