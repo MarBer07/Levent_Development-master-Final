@@ -5,7 +5,8 @@
 #include <iostream>
 #include <assert.h>
 #include <iterator>
-#include "Queue_Example.h"
+#include <cmath>
+
 using namespace std;
 
 //include SDL header
@@ -38,11 +39,11 @@ namespace Simulation
 	{
 		const int *index;
 		int *h;
-		double *temperature; //= 1.0;
+		double *temperature; // = 1.0;
 		double *cooling_rate; //= 0.98;
-		double *current_solution;
-		double *permuted_solution;
-		double *min_temperature; //= 0.000001;
+		double **current_solution;
+		double **permuted_solution;
+		double **min_temperature; //= 0.000001;
 
 	};
 	
@@ -72,18 +73,7 @@ namespace Simulation
 		}
 
 	};
-/*
-	void create_Random_Nodes(Node *n, Sol *s, int value)
-	{
-		
-		myarray[0] = 3, 3;
-		myarray[1] = rand() % 8 + 33, rand() % 41 + 4;
-		myarray[2] = rand() % 23, rand() % 64;
-		myarray[3] = rand() % 74, rand() % 47;
-		myarray[4] = 105, 105;
-		
-	}
-	*/
+
 	void init(Simulation::Node *n, Simulation::Sol *s, int size)
 	{
 		SDL_Init(SDL_INIT_VIDEO);
@@ -103,8 +93,15 @@ namespace Simulation
 		YOUR INIT CODE
 		*/
 
-		s->current_solution = permuted_solution;
+		s->temperature = 1.0;
+		s->cooling_rate = 0.98;
+
+
+		s->current_solution =  s -> permuted_solution;
 		
+		n->distance = sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
+
+
 
 	}
 
