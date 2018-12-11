@@ -30,71 +30,81 @@ namespace Simulation
 
 	struct Node
 	{
-		float **x, **y, distance;
-		int n_nodes = 3;
-		
+		float *pos_x, *pos_y;
+		int n_nodes;
 	};
 	
 	struct Sol
 	{
-		const int *index;
+		int *index;
 		int *h;
-		float distance;
-		double *&temperature; // = 1.0;
-		double *cooling_rate; //= 0.98;
-		double **current_solution;
-		double **permuted_solution;
-		double **min_temperature; //= 0.000001;
-
+		
 	};
 	
-	void retrieve_Nodes(Node *n, Sol *s, int value, int first_city, int detour_1, int detour_2, int detour_3, int last_city)
+	int n_nodes = 5;
+	int myarray;
+	void retrieve_Nodes(Node *n, Sol *s, int value)
 	{
 
-		const int index = 5;
-		int myarray[index];
-
-
-		myarray[0] = first_city;
+		myarray[0];
 		myarray[1] = detour_1;
 		myarray[2] = detour_2;
 		myarray[3] = detour_3;
 		myarray[4] = last_city;
+	}
 
-		float create_Random_Nodes(Sol *s, float pos_x, float pos_y, float distance);
-		{
-			first_city = 3, 3;
-			detour_1 = rand() % 8 + 33, rand() % 41 + 4;
-			detour_2 = rand() % 23, rand() % 64;
-			detour_3 = rand() % 74, rand() % 47;
-			last_city = 105, 105;
+	void create_Random_Nodes(Sol *s, float pos_x, float pos_y, float distance)
+	{
+		myarray[0].pos_x = rand() % screen_width;
+		myarray[0].pos_y = rand() % screen_height;
 
+		myarray[1].pos_x = rand() % screen_width;
+		myarray[1].pos_y = rand() % screen_height;
+
+		myarray[2].pos_x = rand() % screen_width;
+		myarray[2].pos_y = rand() % screen_height;
+	
+		myarray[3].pos_x = rand() % screen_width;
+		myarray[3].pos_y = rand() % screen_height;
+
+		myarray[4].pos_x = rand() % screen_width;
+		myarray[4].pos_y = rand() % screen_height;
 		
-			
-		}
 
-		void simulating_annealing(Simulation::Node *n, Simulation::Sol *s, double cost);
+	}
+
+	double simulating_annealing(Simulation::Node *n, Simulation::Sol *s, double cost, int p)
+	{
+		float distance;
+		double RAND_MIN = 0.0;
+		double RAND_MAX = 1.0;
+		double temperature = 1.0;
+		double cooling_rate = 0.98;
+		double *current_solution;
+		double *permuted_solution;
+		double min_temperature= 0.000001;
+		double p = (double)rand() / RAND_MAX;
+
+		current_solution = 0;
+
+		if (permuted_solution < current_solution)
 		{
-			s -> distance;
-			s->temperature;
-			s->cooling_rate;
-			s-> min_temperature;
-			s->current_solution;
-			s->permuted_solution;
-
-			if (permuted_solution < current_solution)
-			{
-				permuted_solution = current_solution;
-			}
-			else if (permuted_solution > current_solution)
-			{
-				
-			}
-
-			while (temperature > min_temperature)
+				current_solution <- permuted_solution;
+		}
+		else if (permuted_solution > current_solution)
+		{
 
 		}
 
+		temperature = (temperature * cooling_rate);
+
+		if (temperature > min_temperature)
+		{
+			current_solution <-permuted_solution;
+		}
+
+	}
+	
 	};
 
 	void init(Simulation::Node *n, Simulation::Sol *s, int size)
@@ -139,7 +149,7 @@ namespace Simulation
 		YOUR UPDATE CODE
 		*/
 		
-		Simulation::create_Random_Nodes;
+		Simulation::simulating_annealing;
 
 	}
 
@@ -156,6 +166,7 @@ namespace Simulation
 
 		*/
 		
+
 
 		//flip buffers
 		SDL_RenderPresent(renderer);
