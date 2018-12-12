@@ -1,12 +1,7 @@
-//Programer: Marco Bermudez
-//Project: travelling salesman problem with simulated annealing
-//Collaborator" leventalbayrak
-
 #include <iostream>
 #include <assert.h>
 #include <iterator>
 #include <cmath>
-
 using namespace std;
 
 //include SDL header
@@ -33,53 +28,37 @@ namespace Simulation
 		float *pos_x, *pos_y;
 		int n_nodes;
 	};
-	
+
 	struct Sol
 	{
-		int *index;
-		int *h;
+		int myarray;
+		int index;
+		int h;
 	};
+
 	
-	
-	int myarray;
+
 	void retrieve_Nodes(Node *n, Sol *s, int n_nodes = 5)
 	{
-		for (int i = 0; i < n_nodes; i++)
+		n->n_nodes;
+
+		for (int i = 0; i < n_nodes - 1; i++)
 		{
-
+			
+			s ->myarray[n];
+			
 		}
-
-		myarray[0];
-		myarray[1] = detour_1;
-		myarray[2] = detour_2;
-		myarray[3] = detour_3;
-		myarray[4] = last_city; 
+		
 	}
 
-	void create_Random_Nodes(Sol *s, float pos_x, float pos_y, float distance, int n_nodes)
+	void create_Random_Nodes(Node *n, Sol *s)
 	{
 		
-
-		myarray[0].pos_x = rand() % screen_width;
-		myarray[0].pos_y = rand() % screen_height;
-
-		myarray[1].pos_x = rand() % screen_width;
-		myarray[1].pos_y = rand() % screen_height;
-
-		myarray[2].pos_x = rand() % screen_width;
-		myarray[2].pos_y = rand() % screen_height;
-	
-		myarray[3].pos_x = rand() % screen_width;
-		myarray[3].pos_y = rand() % screen_height;
-
-		myarray[4].pos_x = rand() % screen_width;
-		myarray[4].pos_y = rand() % screen_height;
-		
-
 	}
 
-	double simulating_annealing(Simulation::Node *n, Simulation::Sol *s, double cost, int p)
+	double simulating_annealing()
 	{
+		/*
 		float distance;
 		double RAND_MIN = 0.0;
 		double RAND_MAX = 1.0;
@@ -87,32 +66,18 @@ namespace Simulation
 		double cooling_rate = 0.98;
 		double *current_solution;
 		double *permuted_solution;
-		double min_temperature= 0.000001;
+		double min_temperature = 0.000001;
 		double p = (double)rand() / RAND_MAX;
 		double tmp;
 		current_solution = 0;
-		
 
 
-		if (permuted_solution < current_solution)
-		{
-				current_solution <- permuted_solution;
-		}
-		else if (permuted_solution > current_solution)
-		{
 
-		}
-
-		temperature = (temperature * cooling_rate);
-
-		if (temperature > min_temperature)
-		{
-			current_solution <-permuted_solution;
-		}
-
+		*/
 	
-	
-	};
+	}
+
+
 
 	void init()
 	{
@@ -122,22 +87,28 @@ namespace Simulation
 		keys = (unsigned char*)SDL_GetKeyboardState(NULL);
 
 		SDL_Window *window = SDL_CreateWindow(
-			"Fortnite",
-			SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-			screen_width, screen_height, SDL_WINDOW_SHOWN);
+			"null",
+			SDL_WINDOWPOS_CENTERED, 
+			SDL_WINDOWPOS_CENTERED,
+			screen_width, 
+			screen_height, 
+			SDL_WINDOW_SHOWN);
 
 		renderer = SDL_CreateRenderer(window,
-			-1, SDL_RENDERER_ACCELERATED);
+			-1, 
+			SDL_RENDERER_ACCELERATED);
 
 		/*
+
 		YOUR INIT CODE
+
 		*/
 
 
 
 	}
-	
-	void update(unsigned int current_time)
+
+	void update()
 	{
 		//copy previous key state
 		memcpy(prev_key_state, keys, 256);
@@ -153,27 +124,74 @@ namespace Simulation
 		}
 
 		/*
+
 		YOUR UPDATE CODE
+
 		*/
-		
-		
 
 	}
 
 	void draw()
 	{
-		//set color to white
-		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+		//set color to black
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 		//clear screen with white
 		SDL_RenderClear(renderer);
 
 		/*
-
 		YOUR DRAW CODE
-
 		*/
+
+		//Points and Rectangles 
+		SDL_Rect r0;
+		r0.x = 333;
+		r0.y = 333;
+		r0.w = 50;
+		r0.h = 50;
+		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 250);
+		SDL_RenderDrawRect(renderer, &r0);
+		 
+		SDL_Rect r1;
+		r1.x = 133;
+		r1.y = 247;
+		r1.w = 50;
+		r1.h = 50;
+		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 250);
+		SDL_RenderDrawRect(renderer, &r1);
+
+		SDL_Rect r2;
+		r2.x = 222;
+		r2.y = 76;
+		r2.w = 50;
+		r2.h = 50;
+		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 250);
+		SDL_RenderDrawRect(renderer, &r2);
+		
+		SDL_Rect r3;
+		r3.x = 42;
+		r3.y = 55;
+		r3.w = 50;
+		r3.h = 50;
+		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 250);
+		SDL_RenderDrawRect(renderer, &r3);
+
+
+		SDL_Rect r4;
+		r4.x = 346;
+		r4.y = 549;
+		r4.w = 50;
+		r4.h = 50;
+		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 250);
+		SDL_RenderDrawRect(renderer, &r4);
+
 		
 
+		//lines between nodes
+
+		SDL_RenderDrawLine(renderer, 333,333, 346, 549);
+		SDL_RenderDrawLine(renderer, 42, 55, 222, 76);
+		SDL_RenderDrawLine(renderer, 42, 55, 133, 247);
+		SDL_RenderDrawLine(renderer, 133, 247, 333, 333);
 
 		//flip buffers
 		SDL_RenderPresent(renderer);
@@ -182,14 +200,15 @@ namespace Simulation
 }
 int main(int argc, char **argv)
 {
-	
+
+
 	Simulation::init();
 
 
-	for(;;)
+	for (;;)
 	{
 		Simulation::update();
-		
+
 		Simulation::draw();
 	}
 
