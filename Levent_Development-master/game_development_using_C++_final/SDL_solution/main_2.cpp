@@ -71,7 +71,7 @@ namespace Simulation
 		{
 			current_solution = permuted_solution;
 		}
-
+		
 	}
 
 	void create_Random_Nodes(Simulation::Node *n, Simulation::Sol *s)
