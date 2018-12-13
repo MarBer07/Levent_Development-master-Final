@@ -151,7 +151,7 @@ namespace Simulation
 
 	}
 
-	void draw()
+	void draw(Simulation::Node *n)
 	{
 		//set color to black
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -162,15 +162,27 @@ namespace Simulation
 		YOUR DRAW CODE
 		*/
 
+		for(int i = 0; i < 5; i++)
+		{ 
+			SDL_Rect r;
+			r.x = n[i].pos_x;
+			r.y = n[i].pos_y;
+			r.w = 50;
+			r.h = 50;
+			SDL_SetRenderDrawColor(renderer, 255, 0, 0, 250);
+			SDL_RenderFillRect(renderer, &r);
+		}
+
+		/*
 		//Points and Rectangles 
-		SDL_Rect r;
-		r.x = n[0].pos_x;
-		r.y = n[0].pos_y;
-		r.w = 50;
-		r.h = 50;
+		SDL_Rect r0;
+		r0.x = n[0].pos_x;
+		r0.y = n[0].pos_y;
+		r0.w = 50;
+		r0.h = 50;
 		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 250);
 		SDL_RenderFillRect(renderer, &r);
-		/* 
+		 
 		SDL_Rect r1;
 		r1.x = 133;
 		r1.y = 247;
@@ -229,7 +241,7 @@ int main(int argc, char **argv)
 	{
 		Simulation::update();
 
-		Simulation::draw();
+		Simulation::draw(n);
 	}
 
 
