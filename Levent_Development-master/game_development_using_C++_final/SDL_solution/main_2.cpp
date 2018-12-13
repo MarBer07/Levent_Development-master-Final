@@ -40,8 +40,8 @@ namespace Simulation
 
 	double simulating_annealing()
 	{
-		float total_distance;
-		float distance;
+		double *total_distance;
+		double *distance;
 		const int max_num = rand() % 1;
 		double temperature = 1.0;
 		double cooling_rate = 0.98;
@@ -49,17 +49,19 @@ namespace Simulation
 		double *permuted_solution;
 		double min_temperature = 0.000001;
 		double p = (double)rand() / RAND_MAX;
-		double tmp;
+		double *tmp;
 
 		current_solution = 0;
-
+		total_distance = permuted_solution;
 
 		if (permuted_solution < current_solution)
 		{
-			
+			current_solution = permuted_solution;
+			permuted_solution = tmp;
 		}
 		else if (permuted_solution > current_solution)
 		{
+			if (p = 0);
 
 		}
 
@@ -67,7 +69,7 @@ namespace Simulation
 
 		if (temperature > min_temperature)
 		{
-
+			current_solution = permuted_solution;
 		}
 
 	}
@@ -151,7 +153,7 @@ namespace Simulation
 
 	}
 
-	void draw(Simulation::Node *n)
+	void draw(Simulation::Node *n, Simulation::Sol *myarray)
 	{
 		//set color to black
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -173,50 +175,6 @@ namespace Simulation
 			SDL_RenderFillRect(renderer, &r);
 		}
 
-		/*
-		//Points and Rectangles 
-		SDL_Rect r0;
-		r0.x = n[0].pos_x;
-		r0.y = n[0].pos_y;
-		r0.w = 50;
-		r0.h = 50;
-		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 250);
-		SDL_RenderFillRect(renderer, &r);
-		 
-		SDL_Rect r1;
-		r1.x = 133;
-		r1.y = 247;
-		r1.w = 50;
-		r1.h = 50;
-		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 250);
-		SDL_RenderDrawRect(renderer, &r1);
-
-		SDL_Rect r2;
-		r2.x = 222;
-		r2.y = 76;
-		r2.w = 50;
-		r2.h = 50;
-		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 250);
-		SDL_RenderDrawRect(renderer, &r2);
-		
-		SDL_Rect r3;
-		r3.x = 42;
-		r3.y = 55;
-		r3.w = 50;
-		r3.h = 50;
-		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 250);
-		SDL_RenderDrawRect(renderer, &r3);
-
-
-		SDL_Rect r4;
-		r4.x = 346;
-		r4.y = 549;
-		r4.w = 50;
-		r4.h = 50;
-		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 250);
-		SDL_RenderDrawRect(renderer, &r4);
-		*/
-		
 
 		//lines between nodes
 
@@ -241,7 +199,7 @@ int main(int argc, char **argv)
 	{
 		Simulation::update();
 
-		Simulation::draw(n);
+		Simulation::draw(Node, Sol);
 	}
 
 
