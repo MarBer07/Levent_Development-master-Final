@@ -1,6 +1,7 @@
 #include <iostream>
 #include <assert.h>
 #include <iterator>
+#include <stdlib.h>
 #include <cmath>
 using namespace std;
 
@@ -26,7 +27,8 @@ namespace Simulation
 	struct Node
 	{
 		float *pos_x, *pos_y;
-		int n_nodes;
+		float w, h;
+		int n_nodes = 5;
 	};
 
 	struct Sol
@@ -36,32 +38,10 @@ namespace Simulation
 		int h;
 	};
 
-	
-
-	void retrieve_Nodes(Node *n, Sol *s, int n_nodes = 5)
-	{
-		n->n_nodes;
-
-		for (int i = 0; i < n_nodes - 1; i++)
-		{
-			
-			s ->myarray[n];
-			
-		}
-		
-	}
-
-	void create_Random_Nodes(Node *n, Sol *s)
-	{
-		
-	}
-
 	double simulating_annealing()
 	{
-		/*
-		float distance;
-		double RAND_MIN = 0.0;
-		double RAND_MAX = 1.0;
+		float total_distance;
+		const int max_num = rand() % 1;
 		double temperature = 1.0;
 		double cooling_rate = 0.98;
 		double *current_solution;
@@ -69,14 +49,52 @@ namespace Simulation
 		double min_temperature = 0.000001;
 		double p = (double)rand() / RAND_MAX;
 		double tmp;
+
 		current_solution = 0;
 
 
+		if (permuted_solution < current_solution)
+		{
+			
+		}
+		else if (permuted_solution > current_solution)
+		{
 
-		*/
-	
+		}
+
+		temperature *= cooling_rate;
+
+		if (temperature > min_temperature)
+		{
+
+		}
+
+
+		
+
 	}
 
+	void create_Random_Nodes(Simulation::Sol *myarray)
+	{
+		
+
+		double simulating_annealing();
+	}
+	
+
+	void retrieve_Nodes(Node *n, Sol *s, int n_nodes = 5)
+	{
+		n->n_nodes;
+		
+
+		for (int i = 0; i < n_nodes - 1; i++)
+		{
+			s -> myarray[n];
+		}
+
+		create_Random_Nodes();
+		
+	}
 
 
 	void init()
@@ -99,9 +117,7 @@ namespace Simulation
 			SDL_RENDERER_ACCELERATED);
 
 		/*
-
 		YOUR INIT CODE
-
 		*/
 
 
@@ -124,10 +140,10 @@ namespace Simulation
 		}
 
 		/*
-
 		YOUR UPDATE CODE
-
 		*/
+
+
 
 	}
 
