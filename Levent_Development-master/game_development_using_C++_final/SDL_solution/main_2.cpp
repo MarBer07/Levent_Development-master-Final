@@ -41,6 +41,7 @@ namespace Simulation
 	double simulating_annealing()
 	{
 		float total_distance;
+		float distance;
 		const int max_num = rand() % 1;
 		double temperature = 1.0;
 		double cooling_rate = 0.98;
@@ -68,9 +69,6 @@ namespace Simulation
 		{
 
 		}
-
-
-		
 
 	}
 
@@ -165,14 +163,14 @@ namespace Simulation
 		*/
 
 		//Points and Rectangles 
-		SDL_Rect r0;
-		r0.x = 333;
-		r0.y = 333;
-		r0.w = 50;
-		r0.h = 50;
+		SDL_Rect r;
+		r.x = n[0].pos_x;
+		r.y = n[0].pos_y;
+		r.w = 50;
+		r.h = 50;
 		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 250);
-		SDL_RenderDrawRect(renderer, &r0);
-		 
+		SDL_RenderFillRect(renderer, &r);
+		/* 
 		SDL_Rect r1;
 		r1.x = 133;
 		r1.y = 247;
@@ -205,7 +203,7 @@ namespace Simulation
 		r4.h = 50;
 		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 250);
 		SDL_RenderDrawRect(renderer, &r4);
-
+		*/
 		
 
 		//lines between nodes
