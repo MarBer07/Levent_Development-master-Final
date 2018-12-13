@@ -26,7 +26,7 @@ namespace Simulation
 
 	struct Node
 	{
-		float *pos_x, *pos_y;
+		float pos_x, pos_y;
 		float w, h;
 		int n_nodes = 5;
 	};
@@ -74,9 +74,15 @@ namespace Simulation
 
 	}
 
-	void create_Random_Nodes(Simulation::Sol *myarray)
+	void create_Random_Nodes(Simulation::Node *n, Simulation::Sol *s)
 	{
 		
+		for (int i =0; i < 5; i++)
+		{
+			n[0].pos_x = rand() % screen_width;
+			n[0].pos_y = rand() % screen_height;
+		}
+
 
 		double simulating_annealing();
 	}
@@ -92,7 +98,7 @@ namespace Simulation
 			s -> myarray[n];
 		}
 
-		create_Random_Nodes();
+		create_Random_Nodes(n,s);
 		
 	}
 
